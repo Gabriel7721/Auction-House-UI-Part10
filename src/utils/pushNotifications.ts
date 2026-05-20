@@ -11,13 +11,25 @@ const EXPO_PUSH_TOKEN_KEY = "expo_push_token";
 export async function registerForPushNotificationsAsync(): Promise<
   string | null
 > {
+  const isExpoGo = Constants.appOwnership === "expo";
+  console.log("appOwnership:", Constants.appOwnership);
+  console.log("expoGoConfig:", Constants.expoGoConfig);
+  console.log("expoVersion:", Constants.expoVersion);
+  console.log("executionEnvironment:", Constants.executionEnvironment);
+
+  if (Platform.OS === "android" && isExpoGo) {
+    console.log(
+      "Remote push notifications không hoạt động trong Expo Go Android SDK 53+. Hãy dùng Development Build/APK.",
+    );
+    return null;
+  }
   if (Platform.OS === "android") {
     await Notifications.setNotificationChannelAsync("auction-alerts", {
       name: "Auction Alerts",
       importance: Notifications.AndroidImportance.MAX,
       vibrationPattern: [0, 250, 250, 250],
       lightColor: darkColors.primary,
-      sound: "default",
+      sound: "auction_alert.wav",
     });
   }
 
@@ -61,7 +73,7 @@ export async function syncPushTokenWithBackend(): Promise<string | null> {
   if (!token) {
     return null;
   }
-
+  console.log("Expo Push Token:", token);
   await pushTokenApi.registerPushToken(token);
 
   return token;

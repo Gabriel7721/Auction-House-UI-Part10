@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1015937479963",
+    "project_id": "auction-house-push",
+    "storage_bucket": "auction-house-push.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015937479963:android:fdb837f1aeb247d1fc0fbe",
+        "android_client_info": {
+          "package_name": "com.gabrielbui.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvs3If-UOfqVBNJQKKCJmfI0ipqQSFoyI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
